@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  align-items: start;
+  justify-content: space-evenly;
+  background-color: #e7f0ec;
+  height: 90vh;
+  padding: 0px;
+}
+
+.footer-header {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.5rem; /* Adjust size as needed */
+  font-weight: 600; /* Bold for header */
+  color: #333; /* Adjust color as needed */
+  margin-bottom: 1rem;
+}
+.footer-text {
+  padding: 25px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem; /* Adjust size as needed */
+  font-weight: 400; /* Regular weight */
+  color: #666; /* Adjust color as needed */
+  line-height: 1.6; /* Improve readability */
+}

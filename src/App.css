@@ -1,0 +1,251 @@
+/* Basic Navbar Styling */
+.navbar {
+  background-color: #333; /* Background color for the navbar */
+  padding: 1rem;
+  text-align: center;
+  position: sticky; /* Makes the navbar sticky */
+  top: 0; /* Sticks the navbar to the top */
+  z-index: 1000; /* Ensures the navbar stays on top of other content */
+}
+
+.navbar ul {
+  list-style-type: none; /* Remove bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Display the list items horizontally */
+  justify-content: center; /* Center the list items */
+}
+
+.navbar ul li {
+  margin: 0 20px; /* Space between the list items */
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  display: inline-block; /* Ensures padding works for links */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.navbar ul li a:hover {
+  background-color: #86E7B8; /* Background color on hover */
+  color: #333; /* Text color on hover */
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+/* App.css */
+.hero-section {
+  position: relative;
+  height: 100vh; /* Adjust height as needed */
+  background-image: url("D:\Web Dev\BanoQabil Web Dev\MERN\Portfolio\src\assets\heroimage.jpg"); /* Ensure this path is correct */
+  background-size: cover;
+  background-position: center;
+  color: white; /* Text color to stand out against the background */
+
+  
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.home-header, .home-subheader, .cta-button {
+  margin: 10px;
+}
+
+.home-header {
+  font-family: 'Roboto', sans-serif;
+  font-size: 63px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.home-subheader {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: semi-bold;
+}
+
+.cta-button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 26px;
+  font-weight: medium;
+  color: Black; /* Button text color */
+  background-color: #86E7B8; /* Button background color */
+  padding: 15px 45px 15px 45px;
+  border: none;
+  border-radius: 45px;
+  text-decoration: none;
+}
+.cta-button:hover{
+  font-family: 'Roboto', sans-serif;
+  font-size: 26px;
+  font-weight: medium;
+  color: #86E7B8; /* Button text color */
+  background-color: #080808; /* Button background color */
+  padding: 15px 45px 15px 45px;
+  border: none;
+  border-radius: 45px;
+  text-decoration: none;
+}
+.about{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #e7f0ec;
+  width: 100%;
+  height: 70vh;
+  padding: 0px;
+}
+.about-para{
+  width: 50%;
+}
+
+.profile-image{
+  padding: 15px;
+  
+
+}
+#image{
+  height: 250px;
+  width: 250px;
+}
+
+.about-header  {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem; /* Adjust size as needed */
+  font-weight: 600; /* Bold for header */
+  color: #333; /* Adjust color as needed */
+  margin-bottom: 1rem;
+}
+
+.about-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem; /* Adjust size as needed */
+  font-weight: 400; /* Regular weight */
+  color: #666; /* Adjust color as needed */
+  line-height: 1.6; /* Improve readability */
+}
+.services-header{
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem; /* Adjust size as needed */
+  font-weight: 600; /* Bold for header */
+  color: #333; /* Adjust color as needed */
+  margin-bottom: 1rem;
+}
+
+
+.service-item{
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem; /* Adjust size as needed */
+  font-weight: 400; /* Regular weight */
+  color: #666; /* Adjust color as needed */
+  line-height: 1.6; /* Improve readability */
+}
+.service-item p{
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem; /* Adjust size as needed */
+  font-weight: 400; /* Regular weight */
+  color: #666; /* Adjust color as needed */
+  line-height: 1.6; /* Improve readability */
+}
+
+.services {
+  display: flex;
+  gap: 20px;
+  padding: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.service-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 20%; /* Adjust card width */
+  text-align: center;
+}
+.service-item:hover {
+  background-color: #86E7B8; /* Example color (yellow) */
+  transform: translateY(-10px); /* Lift card on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.service-title, .service-description {
+  transition: color 0.1s ease;
+}
+
+.service-item:hover .service-title {
+  color: #ffffff; /* Example dark color for the title */
+}
+
+.service-item:hover .service-description {
+  color: #ffffff; /* Example darker color for the description */
+}
+
+
+
+
+.service-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.service-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+.contact{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #e7f0ec;
+  width: 100%;
+  height: 70vh;
+  padding: 0px;
+}
+.contact-image{
+  padding: 15px;
+}
+#imagec{
+  height: 350px;
+  width: 350px;
+}
+.contact-header{
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem; /* Adjust size as needed */
+  font-weight: 600; /* Bold for header */
+  color: #333; /* Adjust color as needed */
+  margin-bottom: 1rem;
+}
+.contact-text {
+  padding: 25px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem; /* Adjust size as needed */
+  font-weight: 400; /* Regular weight */
+  color: #666; /* Adjust color as needed */
+  line-height: 1.6; /* Improve readability */
+}
