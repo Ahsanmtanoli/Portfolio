@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Woo URL Manager
  * Description: Manage WooCommerce slugs, taxonomy rewrites, redirects, and breadcrumbs with UI. Developed for Watchoice.pk
- * Version: 2.0.8
+ * Version: 2.0.8 (Final)
  * Author: Watchoice.pk
  * Requires at least: 6.5
  * Requires PHP: 7.4
@@ -19,7 +19,7 @@ class Woo_URL_Manager {
         'accessories' => 'accessories',
     ];
     private $default_slug = 'watches'; // Changed from 'accessories' to 'watches'
-    private $plugin_version = '2.0.8';
+    private $plugin_version = '2.0.8 (Final)';
 
     public function __construct() {
         // Check if WooCommerce is active
@@ -631,6 +631,7 @@ class Woo_URL_Manager {
                 <p><strong>Debug Log:</strong> <?php echo defined('WP_DEBUG_LOG') && WP_DEBUG_LOG ? 'Enabled' : 'Disabled'; ?></p>
                 <p><strong>Memory Limit:</strong> <?php echo ini_get('memory_limit'); ?></p>
                 <p><strong>Default Category:</strong> <?php echo ucwords($this->default_slug); ?> (Products without categories will use this slug)</p>
+                <p><strong>Category URL Fix:</strong> ✅ Smart detection for products vs categories enabled</p>
             </div>
             
             <script type="text/javascript">
