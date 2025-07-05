@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Woo URL Manager
  * Description: Manage WooCommerce slugs, taxonomy rewrites, redirects, and breadcrumbs with UI. Developed for Watchoice.pk
- * Version: 2.0.8 (Final)
+ * Version: 2.0.8 (404 Fix)
  * Author: Watchoice.pk
  * Requires at least: 6.5
  * Requires PHP: 7.4
@@ -19,7 +19,7 @@ class Woo_URL_Manager {
         'accessories' => 'accessories',
     ];
     private $default_slug = 'watches'; // Changed from 'accessories' to 'watches'
-    private $plugin_version = '2.0.8 (Final)';
+    private $plugin_version = '2.0.8 (404 Fix)';
 
     public function __construct() {
         // Check if WooCommerce is active
@@ -75,6 +75,9 @@ class Woo_URL_Manager {
             // Debug logging
             add_action('parse_request', [$this, 'debug_parse_request'], 999);
             add_action('wp', [$this, 'debug_query'], 999);
+            
+            // Handle 404 for invalid URLs
+            add_action('wp', [$this, 'handle_404_for_invalid_urls'], 1);
             
         } catch (Exception $e) {
             error_log('Woo URL Manager: Error initializing hooks: ' . $e->getMessage());
@@ -225,6 +228,7 @@ class Woo_URL_Manager {
             $settings = $this->get_settings();
             $vars[] = 'woo_url_slug';
             $vars[] = 'woo_item_name';
+            $vars[] = 'error';
             
             foreach (array_keys($settings['taxonomies']) as $tax) {
                 if (!empty($tax)) {
@@ -364,8 +368,18 @@ class Woo_URL_Manager {
                         return $vars;
                     }
                     
-                    // If neither category nor product found
-                    error_log('Woo URL Manager: Neither category nor product found for "' . $item_name . '" under "' . $parent_slug . '"');
+                    // If neither category nor product found, trigger 404
+                    error_log('Woo URL Manager: Neither category nor product found for "' . $item_name . '" under "' . $parent_slug . '" - triggering 404');
+                    
+                    // Set up proper 404 response
+                    $vars['error'] = '404';
+                    unset($vars['woo_item_name']);
+                    unset($vars['woo_url_slug']);
+                    unset($vars['pagename']);
+                    unset($vars['page']);
+                    unset($vars['product_cat']);
+                    unset($vars['name']);
+                    unset($vars['post_type']);
                 }
             }
             
@@ -511,6 +525,22 @@ class Woo_URL_Manager {
         }
     }
 
+    public function handle_404_for_invalid_urls() {
+        try {
+            global $wp_query;
+            
+            // Check if we flagged this as a 404 in the request filter
+            if (get_query_var('error') === '404') {
+                $wp_query->set_404();
+                status_header(404);
+                nocache_headers();
+                error_log('Woo URL Manager: Properly set 404 status for invalid URL');
+            }
+        } catch (Exception $e) {
+            error_log('Woo URL Manager: Error in handle_404_for_invalid_urls: ' . $e->getMessage());
+        }
+    }
+
     public function debug_query($wp) {
         try {
             if (is_404()) {
@@ -632,6 +662,7 @@ class Woo_URL_Manager {
                 <p><strong>Memory Limit:</strong> <?php echo ini_get('memory_limit'); ?></p>
                 <p><strong>Default Category:</strong> <?php echo ucwords($this->default_slug); ?> (Products without categories will use this slug)</p>
                 <p><strong>Category URL Fix:</strong> ✅ Smart detection for products vs categories enabled</p>
+                <p><strong>404 Error Fix:</strong> ✅ Proper 404 responses for invalid URLs enabled</p>
             </div>
             
             <script type="text/javascript">
