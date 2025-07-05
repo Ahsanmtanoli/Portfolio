@@ -18,7 +18,7 @@ class Woo_URL_Manager {
         'wall-clocks' => 'wall-clocks',
         'accessories' => 'accessories',
     ];
-    private $default_slug = 'watches';
+    private $default_slug = 'watches'; // Changed from 'accessories' to 'watches'
     private $plugin_version = '2.0.8';
 
     public function __construct() {
@@ -503,6 +503,7 @@ class Woo_URL_Manager {
                     <li>After saving, permalinks are automatically flushed.</li>
                     <li>Custom slugs are reflected in breadcrumbs (Yoast, Rank Math, WooCommerce).</li>
                     <li>Check debug.log for rewrite rule issues if 404 errors occur.</li>
+                    <li><strong>NEW:</strong> Use the red "Delete" button to remove unwanted taxonomies from the list.</li>
                 </ul>
                 <p style="font-size: 12px; color: rgb(46,46,46);">Plugin styled and built by <strong>Watchoice.pk</strong> | Version <?php echo $this->plugin_version; ?></p>
             </div>
@@ -515,6 +516,7 @@ class Woo_URL_Manager {
                 <p><strong>PHP Version:</strong> <?php echo phpversion(); ?></p>
                 <p><strong>Debug Log:</strong> <?php echo defined('WP_DEBUG_LOG') && WP_DEBUG_LOG ? 'Enabled' : 'Disabled'; ?></p>
                 <p><strong>Memory Limit:</strong> <?php echo ini_get('memory_limit'); ?></p>
+                <p><strong>Default Category:</strong> <?php echo ucwords($this->default_slug); ?> (Products without categories will use this slug)</p>
             </div>
             
             <script type="text/javascript">
